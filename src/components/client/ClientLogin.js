@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -12,13 +13,21 @@ function ClientLogin() {
 
     function login(e){ 
         e.preventDefault();
-        navigate('/panel/employee');
-
-        if (username == 'admin' && password == 'admin') {
+      console.log(username, password)
+        axios
+        .post(`/login`, {
+          login: username,
+          password: password
+        })
+        .then((res) =>  {
+          if (res.data.isUser) {
             navigate('/panel/employee');
-        } else {
-            setError(true);
-        }
+          } else {
+
+          }
+        })
+
+    
     }
 
     const [open, setOpen] = React.useState(false);

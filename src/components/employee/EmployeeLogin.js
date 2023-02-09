@@ -12,7 +12,6 @@ function EmployeeLogin() {
 
     function login(e){ 
         e.preventDefault();
-        navigate('/panel/employee');
 
         if (username == 'admin' && password == 'admin') {
             navigate('/panel/employee');
@@ -41,11 +40,11 @@ function EmployeeLogin() {
       <Form>
         <Form.Group className="mb-3" >
           <Form.Label>Login</Form.Label>
-          <Form.Control onChange={(e) => setUsername(e.target.value)} value={username} type="email" placeholder="Login" />
+          <Form.Control autoComplete="off" onChange={(e) => setUsername(e.target.value)} value={username} type="email" placeholder="Login" />
         </Form.Group>
         <Form.Group className="mb-3" >
           <Form.Label>Password</Form.Label>
-          <Form.Control onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Password" />
+          <Form.Control autoComplete="off" onChange={(e) => setPassword(e.target.value)} value={password} type="password" placeholder="Password" />
         </Form.Group>
         <div className={`error ${error && 'active'}`}>wrong username/password</div>
         <Button onClick={login} variant="primary" type="submit">

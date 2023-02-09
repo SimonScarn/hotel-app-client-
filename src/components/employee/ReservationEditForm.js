@@ -31,25 +31,27 @@ function ReservationEditForm() {
    console.log(location.pathname.split("/")[3]);
     axios
       .put(`/reservations/update/${location.pathname.split("/")[3]}`,{
-        room: reservation.room
+        room: reservation.room,
+        people: reservation.people,
+        dateStart: startDate,
+        dateEnd: endDate
       })
       .catch(err => console.log(err));
   }
 
   return (
     <>
-      <div>ReservationEditForm</div>
       <Form onSubmit={updateDB}>
         <div className="form-wrapper">
           <div className="form-left">
-            <Form.Group >
+           {/*  <Form.Group >
               <Form.Label>First name</Form.Label>
               <Form.Control/>
             </Form.Group>
             <Form.Group >
               <Form.Label>Last name</Form.Label>
               <Form.Control/>
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group >
               <Form.Label>Room</Form.Label>
               <Form.Control value={reservation?.room} onChange={e => setReservation(values => ({
@@ -59,7 +61,7 @@ function ReservationEditForm() {
             <Form.Group >
               <Form.Label>Number of people</Form.Label>
               <Form.Control value={reservation?.people} onChange={e => setReservation(values => ({
-                ...values, room: e.target.people
+                ...values, people: e.target.people
               }))}/>
             </Form.Group>
           </div>

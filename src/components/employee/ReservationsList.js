@@ -64,7 +64,7 @@ useEffect(() => {
               <td>{item.client_id}</td>
               <td>{item.room}</td>
               <td>{item.people}</td>
-              <td>{item.dateStart.slice(0, 10).split('-').reverse()}/{item.dateEnd.slice(0, 10).split('-').reverse()}</td>
+              <td>{moment(item.dateStart, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('DD-MM-YYYY')}/{moment(item.dateEnd, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('DD-MM-YYYY')}</td>
               <td>{moment(item.createdAt, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('HH:mm:ss DD-MM-YYYY')}</td>
             </tr>)
           })}

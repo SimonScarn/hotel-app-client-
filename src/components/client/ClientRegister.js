@@ -22,7 +22,6 @@ function ClientRegister() {
         if (password !== passwordConfirm) {
             setError(true);
         }
-        console.log('kkkk')
         axios.post('/register', {
             login: username,
             password: password,
@@ -31,7 +30,7 @@ function ClientRegister() {
             clientId: uuid()
         })
         .then((res) => {
-            console.log('uiserinho', res.data)
+            console.log('u', res.data)
         })
 
      /*    if (username == 'admin' && password == 'admin') {

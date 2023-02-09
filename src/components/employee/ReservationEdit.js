@@ -4,6 +4,7 @@ import { Button, IconButton } from "@mui/material";
 import BackBtn from "../BackBtn";
 import Table from 'react-bootstrap/Table';
 import { useNavigate } from "react-router-dom";
+import * as moment from 'moment';
 
 
 function ReservationEdit() {
@@ -35,7 +36,7 @@ function ReservationEdit() {
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>Client lastname</th>
+                  <th>id</th>
                   <th>Room</th>
                   <th>No. of people</th>
                   <th>From/to</th>
@@ -46,11 +47,11 @@ function ReservationEdit() {
                 {reservationsDb?.map((item) => {
                   return (
                     <tr key={item._id}>
-                      <td>{item.client_id}</td>
+                      <td>{item._id}</td>
                       <td>{item.room}</td>
                       <td>{item.people}</td>
                       <td>
-                        {item.from}/{item.to}
+                        <td>{moment(item.dateStart, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('DD-MM-YYYY')}/{moment(item.dateEnd, moment.HTML5_FMT.DATETIME_LOCAL_MS).format('DD-MM-YYYY')}</td>
                       </td>
                       <td style={{display: 'flex', gap: '10px', justifyContent: 'center'}}>
                         <Button
